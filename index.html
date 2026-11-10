@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Personal Branding | ₹1 Profile Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #151923;
+    --ink-2: #1a1f2d;
+    --muted: #737783;
+    --pink: #f2a9be;
+    --mint: #c7e5d8;
+    --cream: #f8f7f4;
+    --line: #e8e5df;
+    --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; color: var(--ink); background: var(--white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, .serif { font-family: 'Playfair Display', Georgia, serif; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+  .section { padding: 96px 0; }
+  .center { text-align: center; }
+  .eyebrow { display: inline-block; font-size: 11.5px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; padding: 6px 15px; border-radius: 999px; border: 1px solid var(--line); background: var(--cream); }
+  .h2 { font-size: 36px; font-weight: 700; letter-spacing: -0.9px; line-height: 1.15; margin-top: 14px; }
+  .sub { color: var(--muted); font-size: 16px; margin-top: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 16px 28px; font-weight: 700; font-size: 14px; letter-spacing: .35px; text-transform: uppercase; cursor: pointer; border: 0; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-pink { background: var(--pink); color: var(--ink); box-shadow: 0 8px 15px rgba(21,25,35,.05); }
+  .btn-ink { background: var(--ink); color: var(--white); }
+  .btn-outline { background: var(--white); border: 1px solid var(--line); color: var(--ink); }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(248,247,244,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(232,229,223,.7); }
+  nav .wrap { height: 80px; display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .logo { width: 40px; height: 40px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-family: 'Playfair Display', serif; font-weight: 700; }
+  .brand b { display: block; font-family: 'Playfair Display', serif; font-size: 18px; }
+  .brand small { font-size: 10px; letter-spacing: 1px; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+  .navlinks { display: flex; gap: 32px; }
+  .navlinks a { font-size: 14px; font-weight: 500; color: var(--muted); }
+  .navlinks a:hover { color: var(--ink); }
+  .nav-cta { background: var(--pink); padding: 10px 20px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; }
+
+  /* HERO */
+  .hero { padding: 160px 0 96px; position: relative; overflow: hidden; background: var(--cream); }
+  .hero::before { content: ""; position: absolute; width: 384px; height: 384px; right: -96px; top: 25%; background: rgba(242,169,190,.2); filter: blur(64px); border-radius: 50%; }
+  .hero::after { content: ""; position: absolute; width: 320px; height: 320px; left: -80px; bottom: 40px; background: rgba(199,229,216,.3); filter: blur(64px); border-radius: 50%; }
+  .hero-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+  .intro { background: rgba(199,229,216,.6); border: 1px solid rgba(199,229,216,.8); display: inline-flex; align-items: center; gap: 10px; padding: 7px 16px; border-radius: 999px; font-size: 11.5px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
+  .hero h1 { font-size: 60px; line-height: 1.02; letter-spacing: -1.5px; margin-top: 24px; font-weight: 700; }
+  .hero h1 .hl { position: relative; display: inline-block; padding: 0 8px; }
+  .hero h1 .hl::before { content: ""; position: absolute; inset: 14% -2px 6% -2px; background: rgba(242,169,190,.7); border-radius: 2px; transform: rotate(-1deg); z-index: -1; }
+  .hero .lead { font-size: 20px; font-weight: 500; color: rgba(21,25,35,.9); margin-top: 24px; }
+  .hero .lead em { font-family: 'Playfair Display', serif; font-weight: 600; }
+  .hero .desc { color: var(--muted); font-size: 16px; margin-top: 24px; max-width: 640px; }
+  .tagline { margin-top: 24px; max-width: 576px; background: var(--white); border-left: 4px solid var(--pink); border-radius: 12px; padding: 16px 16px 16px 20px; box-shadow: 0 8px 15px rgba(21,25,35,.05); font-size: 14px; font-weight: 600; font-style: italic; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 32px; font-size: 12px; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; align-items: center; }
+  .pills .sep { color: var(--line); }
+  .portrait { position: relative; max-width: 448px; margin-left: auto; width: 100%; }
+  .portrait::before { content: ""; position: absolute; inset: -12px 12px 12px -12px; border: 2px solid rgba(242,169,190,.5); background: rgba(199,229,216,.2); border-radius: 24px; }
+  .photo { position: relative; aspect-ratio: 3/4; border-radius: 24px; border: 1px solid var(--line); overflow: hidden; background: linear-gradient(160deg, #e9dcd3, #c7b5a6 60%, #7d6c62); box-shadow: 0 20px 40px -15px rgba(21,25,35,.12); display: grid; place-items: end center; }
+  .photo .ph { color: rgba(255,255,255,.85); font-size: 13px; padding: 16px; text-align: center; }
+  .photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 112px; background: linear-gradient(to top, rgba(21,25,35,.4), rgba(21,25,35,0)); }
+  .badge-top { position: absolute; top: 16px; right: 16px; background: #0a66c2; color: #fff; font-size: 12px; font-weight: 600; letter-spacing: .6px; padding: 6px 12px; border-radius: 999px; z-index: 2; }
+  .float { position: absolute; background: rgba(255,255,255,.95); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; box-shadow: 0 20px 40px -15px rgba(21,25,35,.12); z-index: 3; display: flex; gap: 10px; align-items: center; max-width: 200px; }
+  .float b { display: block; font-size: 12px; }
+  .float small { font-size: 11px; color: var(--muted); }
+  .float .ic { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; flex-shrink: 0; }
+  .f1 { top: -20px; left: -24px; }
+  .f2 { top: 43%; right: -32px; }
+  .f3 { bottom: -24px; left: 8px; background: var(--ink); color: #fff; border-color: rgba(255,255,255,.1); }
+  .f3 small { color: #d1d5db; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+  .stat { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 25px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .stat .ic { width: 40px; height: 40px; border-radius: 50%; background: var(--white); display: grid; place-items: center; font-size: 18px; margin-bottom: 8px; }
+  .stat .num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; line-height: 1.1; }
+  .stat .lbl { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .35px; color: #20232d; }
+  .stat .sm { font-size: 11px; color: var(--muted); }
+  .closing { text-align: center; margin: 56px auto 0; max-width: 576px; }
+  .closing .q { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; }
+  .closing .btn { margin-top: 20px; font-size: 12px; padding: 12px 24px; letter-spacing: .6px; }
+
+  /* LEAD FORM */
+  .leadsec { background: var(--cream); }
+  .lead-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; margin-top: 64px; align-items: start; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 24px; box-shadow: 0 8px 15px rgba(21,25,35,.05); }
+  .lcard { padding: 33px; }
+  .lcard h3 { font-size: 24px; line-height: 1.35; }
+  .lcard p { font-size: 14px; color: var(--muted); margin-top: 16px; }
+  .sep-line { height: 1px; background: var(--line); margin: 24px 0; }
+  .step { display: flex; gap: 14px; margin-bottom: 16px; }
+  .step .n { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .step b { font-size: 14px; font-weight: 600; display: block; }
+  .step span { font-size: 12px; color: var(--muted); }
+  .guar { background: var(--cream); border: 1px solid var(--line); border-radius: 12px; padding: 16px 15px; font-size: 12px; color: var(--muted); display: flex; gap: 12px; align-items: center; margin-top: 24px; }
+  .fcard { padding: 37px; }
+  .fgroup { margin-bottom: 20px; }
+  .fgroup label { display: block; font-size: 12px; font-weight: 600; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 6px; }
+  .fgroup label i { color: #f43f5e; font-style: normal; }
+  .fgroup input { width: 100%; font: inherit; font-size: 14px; padding: 14px 17px; border: 1px solid var(--line); border-radius: 12px; background: var(--white); color: var(--ink); outline: none; transition: border-color .15s, box-shadow .15s; }
+  .fgroup input:focus { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(242,169,190,.25); }
+  .fgroup input::placeholder { color: #9ca3af; }
+  .submit { width: 100%; background: var(--pink); border: 0; border-radius: 12px; padding: 16px; font: inherit; font-weight: 700; font-size: 14px; letter-spacing: .35px; text-transform: uppercase; cursor: pointer; color: var(--ink); box-shadow: 0 1px 1px rgba(0,0,0,.05); }
+  .submit:disabled { opacity: .6; cursor: wait; }
+  .msg { margin-top: 14px; font-size: 14px; text-align: center; min-height: 20px; }
+  .msg.ok { color: #1f7a57; }
+  .msg.err { color: #c2410c; }
+  .privacy { text-align: center; font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+  /* AUDIT */
+  .audit { background: var(--ink); color: #fff; padding: 112px 0; position: relative; overflow: hidden; }
+  .audit::before { content: ""; position: absolute; width: 600px; height: 350px; left: 50%; top: -128px; transform: translateX(-50%); background: rgba(242,169,190,.15); filter: blur(120px); border-radius: 50%; }
+  .audit-head { text-align: center; position: relative; }
+  .audit .eyebrow { background: rgba(242,169,190,.2); border-color: rgba(242,169,190,.3); color: var(--pink); }
+  .audit h2 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 48px; line-height: 1.05; letter-spacing: -1.2px; margin-top: 16px; text-transform: uppercase; }
+  .audit .split { font-size: 20px; color: #e5e7eb; margin-top: 16px; }
+  .audit .split em { font-family: 'Playfair Display', serif; color: var(--pink); }
+  .audit .para { color: #9ca3af; font-size: 16px; max-width: 672px; margin: 16px auto 0; }
+  .price-card { position: relative; background: var(--ink-2); border: 2px solid rgba(242,169,190,.4); border-radius: 24px; padding: 42px; width: 576px; max-width: 100%; margin: 64px auto 0; box-shadow: 0 0 35px -5px rgba(242,169,190,.45); }
+  .badge-card { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--pink); color: var(--ink); font-size: 11px; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase; padding: 4px 16px; border-radius: 999px; white-space: nowrap; }
+  .price-top { text-align: center; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 25px; }
+  .price { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 700; letter-spacing: -1.8px; line-height: 1; }
+  .price-tag { color: var(--pink); font-size: 14px; font-weight: 600; letter-spacing: .7px; text-transform: uppercase; margin-top: 8px; }
+  .price-sub { color: #9ca3af; font-size: 12px; margin-top: 4px; }
+  .checklist { padding: 24px 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .checklist .k { font-size: 12px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: #d1d5db; margin-bottom: 4px; }
+  .checklist li { display: flex; gap: 12px; font-size: 14px; color: #e5e7eb; }
+  .checklist li::before { content: "✓"; color: var(--pink); font-weight: 700; width: 20px; flex-shrink: 0; }
+  .audit-cta { display: flex; flex-direction: column; gap: 16px; padding-top: 16px; }
+  .audit-btn { background: var(--pink); color: var(--ink); border-radius: 16px; padding: 16px 32px; font-weight: 700; font-size: 16px; letter-spacing: .8px; text-transform: uppercase; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 0 35px -5px rgba(242,169,190,.45); transition: transform .15s; }
+  .audit-btn:hover { transform: translateY(-2px); }
+  .audit-note { text-align: center; color: #9ca3af; font-size: 12px; font-style: italic; }
+
+  /* REVIEWS */
+  .reviews { background: var(--cream); padding: 96px 0; }
+  .reviews .head { text-align: center; }
+  .rev-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 64px; }
+  .rcard { background: var(--white); border: 1px solid var(--line); border-radius: 24px; padding: 33px; box-shadow: 0 8px 15px rgba(21,25,35,.05); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+  .qmark { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 36px; color: var(--pink); line-height: 1; }
+  .rtext { font-size: 14px; font-style: italic; margin-top: 11px; }
+  .rauthor { border-top: 1px solid rgba(232,229,223,.6); padding-top: 17px; display: flex; gap: 14px; align-items: center; }
+  .avatar { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--cream); display: grid; place-items: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .rauthor b { display: block; font-size: 14px; }
+  .rauthor small { font-size: 12px; color: var(--muted); }
+  .rev-close { text-align: center; margin: 56px auto 0; max-width: 576px; }
+  .rev-close .q { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; }
+  .rev-close .btn { margin-top: 20px; font-size: 12px; padding: 14px 24px; letter-spacing: .6px; }
+
+  /* FAQ */
+  .faq { max-width: 896px; margin: 0 auto; padding: 97px 32px 96px; }
+  .faq-list { display: flex; flex-direction: column; gap: 16px; margin-top: 64px; }
+  .qa { background: rgba(248,247,244,.5); border: 1px solid var(--line); border-radius: 16px; padding: 25px; cursor: pointer; }
+  .qa summary { list-style: none; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 18px; gap: 16px; }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa .pm { width: 28px; height: 28px; border-radius: 50%; background: var(--white); border: 1px solid var(--line); display: grid; place-items: center; font-size: 16px; font-weight: 700; flex-shrink: 0; transition: transform .2s; }
+  .qa[open] .pm { transform: rotate(45deg); }
+  .qa p { color: var(--muted); font-size: 14px; margin-top: 13px; padding-top: 13px; border-top: 1px solid rgba(232,229,223,.4); }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: #fff; padding: 81px 0 48px; }
+  .f-cta { border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 49px; max-width: 768px; }
+  .f-cta h2 { font-family: 'Playfair Display', serif; font-size: 48px; line-height: 1.05; letter-spacing: -1.2px; text-transform: uppercase; font-weight: 700; }
+  .f-cta .t { color: var(--pink); font-size: 18px; font-weight: 500; margin-top: 11px; }
+  .f-cta .d { color: #9ca3af; font-size: 14px; margin-top: 6px; }
+  .f-tag { display: inline-block; margin-top: 20px; background: rgba(242,169,190,.2); border: 1px solid rgba(242,169,190,.3); color: var(--pink); padding: 9px 17px; border-radius: 12px; font-size: 14px; font-weight: 700; letter-spacing: .7px; text-transform: uppercase; }
+  .f-grid { display: grid; grid-template-columns: 5fr 3fr 4fr; gap: 32px; padding: 48px 0; }
+  .f-brand { display: flex; gap: 12px; align-items: center; }
+  .f-brand .logo { background: var(--pink); color: var(--ink); }
+  .f-brand b { font-family: 'Playfair Display', serif; font-size: 20px; }
+  .f-about { color: #9ca3af; font-size: 14px; margin-top: 16px; max-width: 384px; }
+  .socials { display: flex; gap: 12px; margin-top: 16px; }
+  .socials a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.1); display: grid; place-items: center; font-size: 13px; font-weight: 700; }
+  .f-h { color: var(--pink); font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 12px; }
+  .f-links a { display: block; color: #9ca3af; font-size: 12px; margin-bottom: 8px; }
+  .f-links a:hover { color: #fff; }
+  .f-contact p { font-size: 12px; color: #9ca3af; margin-bottom: 8px; }
+  .f-contact p b { color: #e5e7eb; font-weight: 600; }
+  .f-contact .btn { margin-top: 8px; font-size: 12px; padding: 10px 16px; letter-spacing: .6px; border-radius: 12px; }
+  .f-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 33px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #6b7280; }
+  .f-bottom span:last-child { color: rgba(242,169,190,.9); font-weight: 500; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .navlinks { display: none; }
+    .hero-grid, .lead-grid { grid-template-columns: 1fr; }
+    .portrait { margin: 0 auto; max-width: 420px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .rev-cards { grid-template-columns: 1fr; }
+    .f-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .hero { padding: 130px 0 72px; }
+    .hero h1 { font-size: 40px; letter-spacing: -1px; }
+    .h2 { font-size: 28px; }
+    .audit h2, .f-cta h2 { font-size: 34px; }
+    .price { font-size: 56px; }
+    .price-card { padding: 28px; }
+    .f1 { left: 0; top: -16px; }
+    .f2 { right: 0; }
+    .f3 { left: 0; }
+    .f-grid { grid-template-columns: 1fr; }
+    .fcard, .lcard { padding: 24px; }
+    .section { padding: 72px 0; }
+    .stats { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat .num { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 2. NAVIGATION -->
+<nav>
+  <div class="wrap">
+    <a href="#home" class="brand">
+      <div class="logo">A</div>
+      <div><b>[CLIENT NAME]</b><small>LinkedIn Strategist</small></div>
+    </a>
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQs</a>
+    </div>
+    <a href="#contact" class="nav-cta">Let's Connect</a>
+  </div>
+</nav>
+
+<!-- 3. HERO -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="intro">Personal Branding | LinkedIn Growth</span>
+      <h1>
+        <span style="display:block">FROM ZERO TO</span>
+        <span class="hl">LINKEDIN HERO.</span>
+      </h1>
+      <p class="lead">Your LinkedIn Profile Deserves More Than Just a Presence. It Deserves a <em>Powerful Identity.</em></p>
+      <p class="desc">You have the talent. You have the knowledge. Now it’s time to let the world notice. I help professionals, founders and creators build a powerful LinkedIn presence through smart strategies, engaging content and consistent personal branding. From profile optimization to content creation, scripting to management — I’ll help you turn your LinkedIn into an opportunity-generating platform.</p>
+      <div class="tagline">“Stop scrolling. Start growing. Let your personal brand start showing!”</div>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-pink">Let's Build My Brand →</a>
+        <a href="#audit" class="btn btn-outline">Get My LinkedIn Strategy (₹1)</a>
+      </div>
+      <div class="pills">
+        <span>✦ Personal Branding</span><span class="sep">|</span>
+        <span>✦ Content Strategy</span><span class="sep">|</span>
+        <span>✦ LinkedIn Growth</span>
+      </div>
+    </div>
+
+    <div class="portrait">
+      <span class="badge-top">TOP VOICE</span>
+      <div class="photo">
+        <div class="ph">Professional portrait<br>(replace with your photo)</div>
+      </div>
+      <div class="float f1"><div class="ic" style="background:var(--pink)">✎</div><div><b>Personal Branding</b><small>Build your identity</small></div></div>
+      <div class="float f2"><div class="ic" style="background:var(--mint)">⚡</div><div><b>Content Strategy</b><small>Turn ideas into influence</small></div></div>
+      <div class="float f3"><div class="ic" style="background:var(--pink)">↗</div><div><b style="color:#fff">LinkedIn Growth</b><small>Grow with purpose</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. ACHIEVEMENTS -->
+<section class="section" id="achievements">
+  <div class="wrap center">
+    <span class="eyebrow">The Journey So Far</span>
+    <h2 class="h2 serif">Numbers Tell Stories. Results Build Trust.</h2>
+    <p class="sub">Building a personal brand isn’t about overnight success. It’s about showing up, creating<br>value and making every connection count.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="ic">👥</div><div class="num">[X]+</div><div class="lbl">Personal Brands Built</div><div class="sm">Founders &amp; CXOs</div></div>
+      <div class="stat"><div class="ic">📈</div><div class="num">[X]+</div><div class="lbl">LinkedIn Followers<br>Generated</div><div class="sm">Across Client Niches</div></div>
+      <div class="stat"><div class="ic">✍️</div><div class="num">[X]+</div><div class="lbl">Content Pieces Created</div><div class="sm">Carousels, Hooks &amp; Posts</div></div>
+      <div class="stat"><div class="ic">🎯</div><div class="num">[X]+</div><div class="lbl">Professionals Helped</div><div class="sm">1:1 Mentored &amp; Coached</div></div>
+    </div>
+
+    <div class="closing">
+      <p class="q">“I don’t just help you get noticed; I help you become remembered.”</p>
+      <a href="#contact" class="btn btn-ink">Let's Create Your Success Story →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. LEAD GENERATION FORM -->
+<section class="section leadsec" id="contact">
+  <div class="wrap center">
+    <span class="eyebrow" style="background:var(--mint)">Let's Get Started</span>
+    <h2 class="h2 serif">Your Next Big Opportunity Starts Here!</h2>
+    <p class="sub" style="font-weight:500;color:rgba(21,25,35,.9);font-size:16px">Tell Me About Yourself. Let’s Build Something Powerful Together.</p>
+    <p class="sub" style="font-size:14px;max-width:760px;margin-left:auto;margin-right:auto">Whether you’re starting from zero or looking to take your LinkedIn presence to the next level, you’re in the right place. Share a few details, and let’s discover how we can turn your profile into a powerful personal brand.</p>
+
+    <div class="lead-grid" style="text-align:left">
+      <div class="card lcard">
+        <h3 class="serif">Every Big Brand Starts With One Small Step.</h3>
+        <p>Your ideas deserve attention. Your expertise deserves recognition. Let’s build a presence that reflects your true potential.</p>
+        <div class="sep-line"></div>
+        <div class="step"><div class="n" style="background:rgba(242,169,190,.3)">01</div><div><b>Audit &amp; Roadmap</b><span>Deep analysis of your current profile and tailored action plan.</span></div></div>
+        <div class="step"><div class="n" style="background:var(--mint)">02</div><div><b>Strategic Content &amp; Voice</b><span>Weekly hooks, carousels, and stories written in your unique voice.</span></div></div>
+        <div class="step"><div class="n" style="background:var(--ink);color:#fff">03</div><div><b>Network &amp; Authority</b><span>Inbound leads, career opportunities, and community growth.</span></div></div>
+        <div class="guar"><span>🔒</span><span>100% confidential. No spam or unsolicited messages ever.</span></div>
+      </div>
+
+      <div class="card fcard">
+        <form id="leadForm" novalidate>
+          <div class="fgroup">
+            <label for="name">Full Name <i>*</i></label>
+            <input id="name" name="name" type="text" placeholder="e.g. Sarah Jenkins" required autocomplete="name">
+          </div>
+          <div class="fgroup">
+            <label for="email">Email Address <i>*</i></label>
+            <input id="email" name="email" type="email" placeholder="sarah@example.com" required autocomplete="email">
+          </div>
+          <div class="fgroup">
+            <label for="phone">Mobile Number <i>*</i></label>
+            <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" required autocomplete="tel">
+          </div>
+          <button type="submit" class="submit" id="submitBtn">Let's Get Started</button>
+          <div class="msg" id="msg" role="status"></div>
+          <p class="privacy">Your information stays private. Let’s make your next move count.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ₹1 AUDIT (MAIN CONVERSION) -->
+<section class="audit" id="audit">
+  <div class="wrap">
+    <div class="audit-head">
+      <span class="eyebrow">Your First Step Towards LinkedIn Growth</span>
+      <h2>Just ₹1. That’s All It Takes to<br>Discover Your LinkedIn<br>Potential!</h2>
+      <p class="split">Your Profile Might Be Good. <em>But Is It Working for You?</em></p>
+      <p class="para">Sometimes, the smallest changes create the biggest opportunities. Get your LinkedIn profile professionally audited for just ₹1! I’ll look at your profile and identify what’s working, what’s missing and what could be improved to make your personal brand stand out.</p>
+    </div>
+
+    <div class="price-card">
+      <span class="badge-card">Exclusive Introductory Offer</span>
+      <div class="price-top">
+        <div class="price">₹1</div>
+        <div class="price-tag">One-Time LinkedIn Profile Audit</div>
+        <div class="price-sub">No hidden fees • Actionable personalized video/loom notes</div>
+      </div>
+      <ul class="checklist" style="list-style:none">
+        <li style="display:block"><div class="k">What you get in your audit:</div></li>
+        <li>Profile Headline Review &amp; High-Converting Rewrite</li>
+        <li>Profile Picture and Banner Aesthetic Suggestions</li>
+        <li>About Section Storytelling Analysis</li>
+        <li>Content and Market Positioning Review</li>
+        <li>Untapped Growth &amp; Inbound Opportunities</li>
+        <li>Personalized Step-by-Step Improvement Suggestions</li>
+      </ul>
+      <div class="audit-cta">
+        <a class="audit-btn" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener">Get My ₹1 LinkedIn Audit →</a>
+        <p class="audit-note">“Pay ₹1. Discover what’s missing. Start building what’s next.”</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow" style="background:var(--white)">Client Stories</span>
+      <h2 class="h2 serif">Don't Just Take My Word for It!</h2>
+      <p class="sub" style="font-weight:500;color:rgba(21,25,35,.9)">Real Experiences. Honest Feedback. Meaningful Growth.</p>
+      <p class="sub" style="font-size:14px">The best part of building personal brands isn’t just the numbers. It’s seeing people gain confidence,<br>find their voice and create new opportunities.</p>
+    </div>
+
+    <div class="rev-cards">
+      <div class="rcard">
+        <div>
+          <div class="qmark">“</div>
+          <p class="rtext">[Insert genuine client feedback here.]</p>
+        </div>
+        <div class="rauthor"><div class="avatar">CN</div><div><b>[Client Name]</b><small>[Profession]</small></div></div>
+      </div>
+      <div class="rcard">
+        <div>
+          <div class="qmark">“</div>
+          <p class="rtext">[Insert genuine client feedback here.]</p>
+        </div>
+        <div class="rauthor"><div class="avatar" style="background:rgba(199,229,216,.4)">CN</div><div><b>[Client Name]</b><small>[Profession]</small></div></div>
+      </div>
+      <div class="rcard">
+        <div>
+          <div class="qmark">“</div>
+          <p class="rtext">[Insert genuine client feedback here.]</p>
+        </div>
+        <div class="rauthor"><div class="avatar" style="background:rgba(242,169,190,.2)">CN</div><div><b>[Client Name]</b><small>[Profession]</small></div></div>
+      </div>
+    </div>
+
+    <div class="rev-close">
+      <p class="q">“Their journey, their words, their growth — that’s what makes this work meaningful.”</p>
+      <a href="#contact" class="btn btn-ink">I Want Similar Growth →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8. FAQ -->
+<section class="faq" id="faq" style="background:var(--white)">
+  <div class="center">
+    <span class="eyebrow">Need Clarity?</span>
+    <h2 class="h2 serif">Got Questions? I've Got Answers.</h2>
+    <p class="sub">Everything You Need to Know Before Starting Your LinkedIn Journey.</p>
+  </div>
+  <div class="faq-list">
+    <details class="qa"><summary>What exactly do you help with?<span class="pm">+</span></summary><p>I help professionals, founders and creators build a strong LinkedIn presence, from profile optimization and content strategy to scripting and ongoing management.</p></details>
+    <details class="qa"><summary>Can you help someone starting from zero?<span class="pm">+</span></summary><p>Yes. Many clients start with no content and no audience. We begin with positioning and build from there, step by step.</p></details>
+    <details class="qa"><summary>Do you create LinkedIn posts?<span class="pm">+</span></summary><p>Yes. Hooks, carousels and posts are written in your own voice and matched to your goals.</p></details>
+    <details class="qa"><summary>How does the ₹1 LinkedIn audit work?<span class="pm">+</span></summary><p>You pay ₹1 to get your profile reviewed. You’ll receive feedback on areas such as your headline, profile, content and personal branding opportunities.</p></details>
+    <details class="qa"><summary>How long does it take to see results?<span class="pm">+</span></summary><p>Most people notice engagement changes within a few weeks of consistent posting. Meaningful audience growth usually builds over a few months.</p></details>
+    <details class="qa"><summary>Do I need to be active on LinkedIn already?<span class="pm">+</span></summary><p>No. Whether you’re active or just getting started, the plan is designed around where you are today.</p></details>
+    <details class="qa"><summary>How can I get started?<span class="pm">+</span></summary><p>Fill out the form above or pay the ₹1 audit fee. I’ll reach out to schedule the next step.</p></details>
+  </div>
+</section>
+
+<!-- 9. FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-cta">
+      <h2>Your Story Deserves<br>to Be Seen.</h2>
+      <p class="t">Don’t Just Build a Profile. Build a Personal Brand That Opens Doors.</p>
+      <p class="d">Your next connection could be your next opportunity. Your next post could be your biggest breakthrough. Let’s make your LinkedIn presence count.</p>
+      <span class="f-tag">From zero to hero, let’s grow together.</span>
+    </div>
+
+    <div class="f-grid">
+      <div>
+        <div class="f-brand"><div class="logo">A</div><b>[CLIENT NAME]</b></div>
+        <p class="f-about">Helping founders, executives, students, and ambitious creators turn their professional expertise into high-impact personal brands.</p>
+        <div class="socials">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="mailto:[Email Address]" aria-label="Email">@</a>
+        </div>
+      </div>
+      <div class="f-links">
+        <div class="f-h">Quick Links</div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#services">Services</a>
+        <a href="#reviews">Client Reviews</a>
+        <a href="#faq">FAQs</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="f-contact">
+        <div class="f-h">Connect With Me</div>
+        <p><b>Email:</b> [Email Address]</p>
+        <p><b>Mobile:</b> [Mobile Number]</p>
+        <p><b>Location:</b> Available Globally (Remote)</p>
+        <a class="btn btn-pink" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener">Book ₹1 Profile Audit</a>
+      </div>
+    </div>
+
+    <div class="f-bottom">
+      <span>© 2026 [Client Name]. All Rights Reserved.</span>
+      <span>Built with Strategy. Powered by Creativity. Driven by Growth.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Apps Script Web app URL (deployed)
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby1YEwQcken_wTJEbqDZCgeDi8poaSywvTTmb0FG2BnnvpLrJFNtgW-yvX76AdGjpQ/exec";
+
+  const form = document.getElementById("leadForm");
+  const btn = document.getElementById("submitBtn");
+  const msg = document.getElementById("msg");
+
+  function showSuccess() {
+    msg.className = "msg ok";
+    msg.textContent = "Thank you! I’ll be in touch soon.";
+    form.reset();
+    btn.disabled = false;
+    btn.textContent = "Let's Get Started";
+  }
+
+  function showError() {
+    msg.className = "msg err";
+    msg.textContent = "Something went wrong. Please try again.";
+    btn.disabled = false;
+    btn.textContent = "Let's Get Started";
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+
+    if (!name || !email || !phone) {
+      msg.className = "msg err";
+      msg.textContent = "Please fill in all required fields.";
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+    msg.textContent = "";
+
+    const url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, email: email, phone: phone });
+
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(() => showSuccess())
+      .catch(() => showError());
+  });
+</script>
+</body>
+</html>
